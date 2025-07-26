@@ -15,6 +15,9 @@ This AI-powered assistant connects to Gmail, summarizes incoming emails, and gen
 - Gmail API
 - Streamlit (for GUI)
 
+### Screenshots
+- ![screenshot](https://github.com/Anees99/Generative-AI/blob/main/Gmail%20Automation%20Asistant/Simple%20Demo%20Screenshot.jpeg)
+
 
 ### How to Run
 1. Install dependencies: `pip install -r requirements.txt`
