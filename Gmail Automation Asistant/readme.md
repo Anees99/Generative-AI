@@ -1,6 +1,6 @@
 # Gmail Automation Assistant
 
-This AI-powered assistant connects to Gmail, summarizes incoming emails, and generates smart replies using OpenAI's API. It includes:
+This AI-powered assistant connects to Gmail, summarizes incoming emails, and generates smart replies using OpenAI's, Groq and Qwen APIs. It includes:
 
 - Auto email summarization
 - Smart reply generation
