@@ -29,6 +29,13 @@ It guides customers through booking, calculates discounts based on bank cards, a
 
 ---
 
+## ScreenShots of Workflow
+<img width="1000" height="415" alt="image" src="https://github.com/user-attachments/assets/9595620c-068e-4a05-90f8-36e776c22a6b" />
+<img width="986" height="372" alt="image" src="https://github.com/user-attachments/assets/b3c23551-0cd4-49fa-afc5-62e251e929af" />
+
+
+---
+
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
