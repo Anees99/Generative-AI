@@ -40,8 +40,8 @@ It guides customers through booking, calculates discounts based on bank cards, a
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/restaurant-reservation-automation.git
-cd restaurant-reservation-automation
+git clone https://github.com/Anees99/Generative-AI.git
+cd "Generative-AI/n8n Workflows/Automation of Restaurant Reservations with AI on WhatsApp and Google Sheets"
 ```
 
 ---
