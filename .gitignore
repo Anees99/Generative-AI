@@ -1,33 +1,44 @@
 ```
-# Python
-__pycache__/
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Build artifacts
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
+__pycache__/
+dist/
+build/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
+# Dependencies
+node_modules/
 venv/
 .venv/
-.ENV
-.venv.bak/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
+.mypy_cache/
+.pytest_cache/
 .coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-*.pot
-*.pyc
-*.pyo
-*.pyd
-.MF
-.tags*
-test-results.xml
-*.tm_properties
+coverage/
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+
+# System
 .DS_Store
 Thumbs.db
 ```
