@@ -44,7 +44,7 @@ class AIProcessor:
     
     def __init__(self):
         """Initialize the AI processor with configured provider."""
-        self.provider = os.getenv('LLM_PROVIDER', 'openai').lower()
+        self.provider = os.getenv('LLM_PROVIDER', 'google').lower()
         self.api_key = None
         self.model = None
         self.client = None
@@ -260,6 +260,15 @@ class AIProcessor:
                 "max_output_tokens": 2000,
             }
             
+            # Add system instruction for JSON-only response
+            system_instruction = (
+                "You are an expert career advisor and resume writer. "
+                "Respond ONLY with valid JSON. No markdown, no explanations."
+            )
+            
+            # Create model with system instruction if supported
+            import google.generativeai as genai
+            
             response = self.client.generate_content(
                 prompt,
                 generation_config=generation_config
@@ -267,17 +276,29 @@ class AIProcessor:
             
             text = response.text.strip()
             
-            # Estimate tokens (Gemini doesn't always provide exact counts)
-            # Rough estimate: 1 token ≈ 4 characters
-            estimated_tokens = len(text) // 4 + len(prompt) // 4
+            # Get actual token usage from response metadata if available
+            usage_metadata = getattr(response, 'usage_metadata', None)
+            if usage_metadata:
+                input_tokens = getattr(usage_metadata, 'prompt_token_count', 0)
+                output_tokens = getattr(usage_metadata, 'candidates_token_count', 0)
+                total_tokens = input_tokens + output_tokens
+            else:
+                # Estimate tokens: 1 token ≈ 4 characters
+                input_tokens = len(prompt) // 4
+                output_tokens = len(text) // 4
+                total_tokens = input_tokens + output_tokens
             
-            # Calculate cost
+            # Calculate cost using actual token counts
             cost_info = self.COSTS['google'].get(self.model, self.COSTS['google']['gemini-1.5-flash'])
-            cost_usd = estimated_tokens * cost_info['input'] / 1_000_000  # Simplified: use input rate for both
+            input_cost = input_tokens * cost_info['input'] / 1_000_000
+            output_cost = output_tokens * cost_info['output'] / 1_000_000
+            cost_usd = input_cost + output_cost
+            
+            logger.debug(f"Gemini tokens - Input: {input_tokens}, Output: {output_tokens}, Total: {total_tokens}")
             
             return {
                 'text': text,
-                'token_count': estimated_tokens,
+                'token_count': total_tokens,
                 'cost_usd': cost_usd
             }
             
@@ -299,8 +320,11 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     
     # Check if API key is configured
-    if not os.getenv('OPENAI_API_KEY') and not os.getenv('GOOGLE_API_KEY'):
-        print("No API key configured. Set OPENAI_API_KEY or GOOGLE_API_KEY in .env file.")
+    provider = os.getenv('LLM_PROVIDER', 'google').lower()
+    api_key_var = 'GOOGLE_API_KEY' if provider == 'google' else 'OPENAI_API_KEY'
+    
+    if not os.getenv(api_key_var):
+        print(f"No API key configured. Set {api_key_var} in .env file.")
     else:
         processor = AIProcessor()
         print(f"Provider: {processor.get_provider_info()}")

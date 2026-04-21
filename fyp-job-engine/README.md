@@ -73,18 +73,20 @@ playwright install chromium
 Create a `.env` file in the project root:
 
 ```env
-# Required: Choose LLM provider (openai or google)
-LLM_PROVIDER=openai
+# Required: Choose LLM provider (google or openai)
+# Default is 'google' for Gemini API
+LLM_PROVIDER=google
 
-# For OpenAI:
-OPENAI_API_KEY=your_openai_api_key_here
-
-# For Google Gemini:
+# For Google Gemini (Recommended):
 GOOGLE_API_KEY=your_google_api_key_here
 
+# For OpenAI (Alternative):
+# LLM_PROVIDER=openai
+# OPENAI_API_KEY=your_openai_api_key_here
+
 # Optional: Customize model selection
-# OPENAI_MODEL=gpt-4o-mini
 # GOOGLE_MODEL=gemini-1.5-flash
+# OPENAI_MODEL=gpt-4o-mini
 ```
 
 ### Running the Application

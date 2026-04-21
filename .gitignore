@@ -1,61 +1,38 @@
-```
-# Python
+```gitignore
+# Compiled Python files
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual environments
-venv/
-env/
-ENV/
+# Dependencies
 .venv/
-.env/
+venv/
+node_modules/
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+# Build artifacts
+dist/
+build/
+target/
 
-# Logs
+# Logs and temporary files
 *.log
+*.tmp
+*.swp
 
 # Environment variables
 .env
 .env.local
 *.env.*
 
+# Editors
+.vscode/
+.idea/
+
 # Coverage reports
-.coverage
+coverage/
 htmlcov/
-.coverage.*
+.coverage
 
-# MyPy
+# Python cache
 .mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pytest
 .pytest_cache/
-
-# OS
-.DS_Store
-Thumbs.db
 ```
