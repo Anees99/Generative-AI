@@ -1,4 +1,3 @@
-```
 # Python
 __pycache__/
 *.py[cod]
@@ -21,41 +20,25 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual environments
+# Virtual Environment
 venv/
 env/
 ENV/
-.venv/
-.env/
+.venv
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# Logs
-*.log
-
-# Environment variables
-.env
-.env.local
-*.env.*
-
-# Coverage reports
-.coverage
-htmlcov/
-.coverage.*
-
-# MyPy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pytest
-.pytest_cache/
+*~
 
 # OS
 .DS_Store
 Thumbs.db
-```
+
+# Project specific
+*.log
+.env
+jobs.db
+output/*.pdf
